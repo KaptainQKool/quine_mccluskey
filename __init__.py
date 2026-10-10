@@ -128,15 +128,10 @@ def minterms_from_cube(
 ) -> set[int]:
     x_index: int = cube.find('X')
     if x_index >= 0:
-        new_cube_0_split: list[str] = []
-        new_cube_1_split: list[str] = []
-        for c in cube:
-            if c == 'X':
-                new_cube_0_split.append('0')
-                new_cube_1_split.append('1')
-            else:
-                new_cube_0_split.append(c)
-                new_cube_1_split.append(c)
+        new_cube_0_split: list[str] = list(cube)
+        new_cube_1_split: list[str] = list(cube)
+        new_cube_0_split[x_index] = '0'
+        new_cube_1_split[x_index] = '1'
         return minterms_from_cube(''.join(new_cube_0_split), minterms) | minterms_from_cube(''.join(new_cube_1_split), minterms)
     else:
         out_minterms: set[int] = set()
@@ -154,43 +149,43 @@ if __name__ == '__main__':
     
     # bhd converter
     print('D0')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [1, 4, 11, 13], []
-    ))
+    )))
     print()
     
     print('D1')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [5, 6, 11, 12, 14, 15], []
-    ))
+    )))
     print()
     
     print('D2')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [2, 12, 14, 15], []
-    ))
+    )))
     print()
     
     print('D3')
-    print(quine_mccluskey(
-        ['W3', 'W2', 'W1', 'W0'], [1, 4, 7, 10, 15], [9]
-    ))
+    print(sorted(quine_mccluskey(
+        ['W3', 'W2', 'W1', 'W0'], [1, 4, 7, 10, 15], []
+    )))
     print()
     
     print('D4')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [1, 3, 4, 5, 7, 9], []
-    ))
+    )))
     print()
     
     print('D5')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [1, 2, 3, 7, 13], []
-    ))
+    )))
     print()
     
     print('D6')
-    print(quine_mccluskey(
+    print(sorted(quine_mccluskey(
         ['W3', 'W2', 'W1', 'W0'], [0, 1, 7, 12], []
-    ))
+    )))
     print()
