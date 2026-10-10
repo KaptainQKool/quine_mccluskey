@@ -105,7 +105,7 @@ def essential_cubes(
         cover_chart |= {c: minterms_from_cube(c, minterms)}
     
     while any(cover_chart.values()):
-        max_uncovered_cube: str = ""
+        max_uncovered_cube: str = ''
         max_uncovered_minterms: set[int] = set()
         max_n_uncovered_minterms: int = 0
         for k, v in cover_chart.items():
